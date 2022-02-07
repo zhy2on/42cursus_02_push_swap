@@ -6,17 +6,19 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/07 19:58:56 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/07 20:42:01 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	handle_error(int flag, t_stack *stack)
-{
-	if (flag == 2)
-		free_stack(stack);
-	write(2, "parameter error\n", 16);
+{	
+	free_stack(stack);
+	if (flag == 1)
+		write(2, "parameter error\n", 16);
+	else if (flag == 2)
+		write(2, "malloc error\n", 13);
 	exit(1);
 }
 
@@ -26,19 +28,19 @@ char	*get_values_sub(t_stack *a, const char *str, int sign)
 	t_node		*ptr;
 
 	if (*str < '0' || *str > '9')
-		handle_error(2, a);
+		handle_error(1, a);
 	num = 0;
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str++ - '0');
 		if (sign * num < -2147483648 || sign * num > 2147483647)
-			handle_error(2, a);
+			handle_error(1, a);
 	}
 	ptr = a->top;
 	while (ptr)
 	{
 		if (ptr->elem == sign * num)
-			handle_error(2, a);
+			handle_error(1, a);
 		ptr = ptr->next;
 	}
 	add_first(a, sign * num);
