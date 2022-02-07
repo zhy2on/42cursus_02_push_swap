@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/07 20:42:01 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/07 20:44:29 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*get_values_sub(t_stack *a, const char *str, int sign)
 			handle_error(1, a);
 		ptr = ptr->next;
 	}
-	add_first(a, sign * num);
+	add_node(a, sign * num);
 	return ((char *)str);
 }
 
@@ -78,7 +78,8 @@ int	main(int argc, char **argv)
 	while (--i >= 1)
 		while (*argv[i])
 			argv[i] = get_values(&a, argv[i]);
-	//print_stack(&a);
+	rotate(&a);
+	print_stack(&a);
 	//print_stack(&b);
 	free_stack(&a);
 	free_stack(&b);
