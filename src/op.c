@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:57:18 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 19:01:37 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 02:29:36 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	push(t_stack *a, t_stack *b)
 {
 	if (!b->cnt)
 		return (1);
-	add_node(a, remove_node(b));
+	if (add_node(a, remove_node(b)))
+		handle_error();
 	return (0);
 }
 

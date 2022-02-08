@@ -6,19 +6,16 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:58:55 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 02:30:06 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-void	handle_error(int flag, t_stack *stack)
+void	handle_error(void)
 {	
-	free_stack(stack);
-	if (flag == 1)
-		write(2, "parameter error\n", 16);
-	else if (flag == 2)
-		write(2, "malloc error\n", 13);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -51,7 +48,7 @@ int	main(int argc, char **argv)
 	init_stack(&a);
 	init_stack(&b);
 	if (argc < 2)
-		handle_error(1, NULL);
+		handle_error();
 	i = argc;
 	while (--i >= 1)
 		while (*argv[i])

@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:31:00 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 02:30:11 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_op_cnt
 /*
 *** main.c ***
 */
-void	handle_error(int flag, t_stack *stack);
+void	handle_error(void);
 void	stack_sort(t_stack *a, t_stack *b);
 
 /*
@@ -103,7 +103,7 @@ int		reverse_rotate(t_stack *a);
 void	init_stack(t_stack *stack);
 t_node	*getnode(t_node *next, int elem);
 void	free_stack(t_stack *stack);
-void	add_node(t_stack *stack, int elem);
+int		add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);
 
 /*

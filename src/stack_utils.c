@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:59:44 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:31:26 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 02:24:03 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	free_stack(t_stack *stack)
 	free(ptr);
 }
 
-void	add_node(t_stack *stack, int elem)
+int	add_node(t_stack *stack, int elem)
 {
 	t_node	*ptr;
 
 	ptr = getnode(stack->top, elem);
 	if (!ptr)
-		handle_error(2, stack);
+		return (1);
 	ptr->next = stack->top;
 	stack->top = ptr;
 	if (elem > stack->max[0])
@@ -61,6 +61,7 @@ void	add_node(t_stack *stack, int elem)
 	if (elem < stack->min)
 		stack->min = elem;
 	stack->cnt++;
+	return (0);
 }
 
 int	remove_node(t_stack *stack)
