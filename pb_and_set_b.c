@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 00:45:21 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 01:20:41 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	pb_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 {
 	int	i;
 
-	//printf("ra rb rra rrb min_type node %d %d %d %d %d %d\n", op_cnt->ra, op_cnt->rb, op_cnt->rra, op_cnt->rrb, op_cnt->min_type, op_cnt->node->elem);
 	if (op_cnt->min_type == 1)
 	{
 		i = loop_do_op(a, b, ft_min(op_cnt->ra, op_cnt->rb), "rr");

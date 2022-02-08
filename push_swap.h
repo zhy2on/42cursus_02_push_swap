@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:00:35 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 01:22:25 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 enum {
 	INT_MAX = 2147483647,
@@ -48,13 +47,13 @@ typedef struct s_op_cnt
 }				t_op_cnt;
 
 /*
-*** main ***
+*** main.c ***
 */
 void	handle_error(int flag, t_stack *stack);
 void	stack_sort(t_stack *a, t_stack *b);
 
 /*
-*** choose_best_elem
+*** choose_best_elem.c ***
 */
 void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt);
 void	count_op_a(t_node *node, t_stack *a, t_op_cnt *op_cnt);
@@ -63,7 +62,7 @@ void	set_a_max(t_stack *a);
 void	choose_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt);
 
 /*
-*** pb_and_set_b
+*** pb_and_set_b.c ***
 */
 int		loop_do_op(t_stack *a, t_stack *b, int n, const char *op);
 void	pb_best_elem_sub(t_stack *a, t_stack *b, t_op_cnt *op_cnt);
@@ -71,27 +70,27 @@ void	pb_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt);
 void	set_b_max_on_top(t_stack *a, t_stack *b);
 
 /*
-*** simple_sort ***
+*** simple_sort.c ***
 */
 void	sort_3(t_stack *a, t_stack *b);
 void	sort_2(t_stack *a, t_stack *b);
 void	simple_sort(t_stack *a, t_stack *b);
 
 /*
-*** get_values ***
+*** get_values.c ***
 */
 char	*get_values_sub(t_stack *a, const char *str, int sign);
 char	*get_values(t_stack *a, const char *str);
 
 /*
-*** do_op ***
+*** do_op.c ***
 */
 void	do_op_sub_2(t_stack *a, t_stack *b, const char *op);
 void	do_op_sub_1(t_stack *a, t_stack *b, const char *op);
 void	do_op(t_stack *a, t_stack *b, const char *op);
 
 /*
-*** op ***
+*** op.c ***
 */
 int		push(t_stack *a, t_stack *b);
 int		swap(t_stack *a);
@@ -99,7 +98,7 @@ int		rotate(t_stack *a);
 int		reverse_rotate(t_stack *a);
 
 /*
-*** stack utils ***
+*** stack utils.c ***
 */
 void	init_stack(t_stack *stack);
 t_node	*getnode(t_node *prev, t_node *next, int elem);
@@ -108,15 +107,10 @@ void	add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);
 
 /*
-*** ft_utils
+*** ft_utils.c ***
 */
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_max(int n, int m);
 int		ft_min(int n, int m);
-
-/*
-*** for test ***
-*/
-void	print_stack(t_stack *stack);
 
 #endif

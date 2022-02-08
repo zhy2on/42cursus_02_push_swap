@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 00:46:37 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 01:20:19 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	main(int argc, char **argv)
 		while (*argv[i])
 			argv[i] = get_values(&a, argv[i]);
 	stack_sort(&a, &b);
-	//print_stack(&a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
