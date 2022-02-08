@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:22:25 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 01:31:00 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		reverse_rotate(t_stack *a);
 *** stack utils.c ***
 */
 void	init_stack(t_stack *stack);
-t_node	*getnode(t_node *prev, t_node *next, int elem);
+t_node	*getnode(t_node *next, int elem);
 void	free_stack(t_stack *stack);
 void	add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);

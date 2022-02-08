@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 00:44:19 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 01:30:20 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt)
 {
 	t_node	*ptr;
 	int		tmp;
-	int		cnt;
 	int		i;
 
 	if (b->cnt == 0)

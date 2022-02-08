@@ -6,13 +6,13 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:59:44 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 19:53:04 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 01:31:26 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*getnode(t_node *prev, t_node *next, int elem)
+t_node	*getnode(t_node *next, int elem)
 {
 	t_node	*ptr;
 
@@ -51,7 +51,7 @@ void	add_node(t_stack *stack, int elem)
 {
 	t_node	*ptr;
 
-	ptr = getnode(NULL, stack->top, elem);
+	ptr = getnode(stack->top, elem);
 	if (!ptr)
 		handle_error(2, stack);
 	ptr->next = stack->top;
@@ -66,7 +66,6 @@ void	add_node(t_stack *stack, int elem)
 int	remove_node(t_stack *stack)
 {
 	int		ret;
-	int		tmp;
 	t_node	*ptr;
 
 	ptr = stack->top;
