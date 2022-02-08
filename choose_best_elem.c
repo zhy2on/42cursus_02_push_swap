@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   choose_min_op.c                                    :+:      :+:    :+:   */
+/*   choose_best_elem.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 18:00:15 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 18:06:54 by jihoh            ###   ########.fr       */
+/*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
+/*   Updated: 2022/02/08 19:51:45 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_min(int n, int m)
-{
-	if (n < m)
-		return (n);
-	else
-		return (m);
-}
-
-int	ft_max(int n, int m)
-{
-	if (n > m)
-		return (n);
-	else
-		return (m);
-}
-
 void	count_op_a(t_node *node, t_stack *a, t_op_cnt *op_cnt)
 {
 	t_node	*ptr;
 
+	op_cnt->ra = 0;
 	if (a->cnt == 0)
 		return ;
 	ptr = a->top;
@@ -78,6 +63,7 @@ void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 	int	rrr;
 	int	r_rr;
 
+	op_cnt->node = node;
 	count_op_a(node, a, op_cnt);
 	count_op_b(node, b, op_cnt);
 	rr = ft_max(op_cnt->ra, op_cnt->rb);
@@ -91,4 +77,44 @@ void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 		op_cnt->min_type = 2;
 	else
 		op_cnt->min_type = 3;
+}
+
+void	set_a_max(t_stack *a)
+{
+	t_node	*ptr;
+	int		tmp;
+
+	ptr = a->top;
+	tmp = INT_MIN;
+	while (ptr)
+		if (ptr->elem < a->max[0] && ptr->elem >= tmp)
+			tmp = ptr->elem;
+	a->max[1] = tmp;
+	ptr = a->top;
+	tmp = INT_MIN;
+	while (ptr)
+		if (ptr->elem < a->max[1] && ptr->elem >= tmp)
+			tmp = ptr->elem;
+	a->max[2] = tmp;
+}
+
+void	choose_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt)
+{
+	t_node		*ptr;
+	t_op_cnt	tmp;
+
+	set_a_max(a);
+	ptr = a->top;
+	while (ptr->elem == a->max[0] || ptr->elem == a->max[1]
+		|| ptr->elem == a->max[2])
+		ptr = ptr->next;
+	choose_min_op(ptr, a, b, op_cnt);
+	ptr = a->top;
+	while (ptr)
+	{
+		choose_min_op(ptr, a, b, &tmp);
+		if (tmp.min_cnt < op_cnt->min_cnt && ptr->elem != a->max[0]
+			&& ptr->elem != a->max[1] && ptr->elem != a->max[2])
+				*op_cnt = tmp;
+	}
 }

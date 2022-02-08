@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 18:09:08 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 19:52:43 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,31 @@ typedef struct s_op_cnt
 	int		rrb;
 	char	min_type;
 	int		min_cnt;
+	t_node	*node;
 }				t_op_cnt;
 
 /*
 *** main ***
 */
 void	handle_error(int flag, t_stack *stack);
+void	stack_sort(t_stack *a, t_stack *b);
 
 /*
-*** choose_min_op
+*** choose_best_elem
 */
-void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt);
 void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt);
 void	count_op_a(t_node *node, t_stack *a, t_op_cnt *op_cnt);
-int		ft_max(int n, int m);
-int		ft_min(int n, int m);
+void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt);
+void	set_a_max(t_stack *a);
+void	choose_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt);
+
+/*
+*** pb_and_set_b
+*/
+int		loop_do_op(t_stack *a, t_stack *b, int n, const char *op);
+void	pb_best_elem_sub(t_stack *a, t_stack *b, t_op_cnt *op_cnt);
+void	pb_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt);
+void	set_b_max_on_top(t_stack *a, t_stack *b);
 
 /*
 *** simple_sort ***
@@ -75,18 +85,17 @@ char	*get_values(t_stack *a, const char *str);
 /*
 *** do_op ***
 */
-int		ft_strcmp(const char *s1, const char *s2);
-void	do_op_sub_2(t_stack *a, t_stack *b, char *op);
-void	do_op_sub_1(t_stack *a, t_stack *b, char *op);
-void	do_op(t_stack *a, t_stack *b, char *op);
+void	do_op_sub_2(t_stack *a, t_stack *b, const char *op);
+void	do_op_sub_1(t_stack *a, t_stack *b, const char *op);
+void	do_op(t_stack *a, t_stack *b, const char *op);
 
 /*
 *** op ***
 */
 int		push(t_stack *a, t_stack *b);
-void	swap(t_stack *a);
-void	rotate(t_stack *a);
-void	reverse_rotate(t_stack *a);
+int		swap(t_stack *a);
+int		rotate(t_stack *a);
+int		reverse_rotate(t_stack *a);
 
 /*
 *** stack utils ***
@@ -94,8 +103,15 @@ void	reverse_rotate(t_stack *a);
 void	init_stack(t_stack *stack);
 t_node	*getnode(t_node *prev, t_node *next, int elem);
 void	free_stack(t_stack *stack);
-int		add_node(t_stack *stack, int elem);
+void	add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);
+
+/*
+*** ft_utils
+*/
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_max(int n, int m);
+int		ft_min(int n, int m);
 
 /*
 *** for test ***

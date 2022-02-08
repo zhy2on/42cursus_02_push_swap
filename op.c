@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:57:18 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/07 20:23:20 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 19:01:37 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,29 @@ int	push(t_stack *a, t_stack *b)
 {
 	if (!b->cnt)
 		return (1);
-	else if (!add_node(a, remove_node(b)))
-		return (0);
-	return (1);
+	add_node(a, remove_node(b));
+	return (0);
 }
 
-void	swap(t_stack *a)
+int	swap(t_stack *a)
 {
 	int		tmp;
 
 	if (a->cnt <= 1)
-		return ;
-	else
-	{
-		tmp = a->top->elem;
-		a->top->elem = a->top->next->elem;
-		a->top->next->elem = tmp;
-	}
+		return (1);
+	tmp = a->top->elem;
+	a->top->elem = a->top->next->elem;
+	a->top->next->elem = tmp;
+	return (0);
 }
 
-void	rotate(t_stack *a)
+int	rotate(t_stack *a)
 {
 	t_node	*ptr;
 	t_node	*tmp;
 
 	if (a->cnt <= 1)
-		return ;
+		return (1);
 	ptr = a->top;
 	tmp = a->top->next;
 	while (ptr->next)
@@ -49,15 +46,16 @@ void	rotate(t_stack *a)
 	ptr->next = a->top;
 	ptr->next->next = NULL;
 	a->top = tmp;
+	return (0);
 }
 
-void	reverse_rotate(t_stack *a)
+int	reverse_rotate(t_stack *a)
 {
 	t_node	*ptr;
 	t_node	*tmp;
 
 	if (a->cnt <= 1)
-		return ;
+		return (1);
 	ptr = a->top;
 	while (ptr->next)
 	{
@@ -68,4 +66,5 @@ void	reverse_rotate(t_stack *a)
 	tmp->next = NULL;
 	ptr->next = a->top;
 	a->top = ptr;
+	return (0);
 }
