@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 20:01:18 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:44:19 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt)
 	if (b->cnt == 0)
 		return ;
 	tmp = INT_MIN;
-	op_cnt->rb = -1;
 	i = 0;
 	ptr = b->top;
 	while (ptr && ++i)
 	{
-		if (ptr->elem >= tmp)
+		if (b->min < node->elem && ptr->elem >= tmp && ptr->elem < node->elem)
 		{
 			tmp = ptr->elem;
-			cnt = i - 1;
-			if (ptr->elem < node->elem)
-				op_cnt->rb = cnt;
+			op_cnt->rb = i - 1;
+		}
+		if (b->min > node->elem && ptr->elem >= tmp)
+		{
+			tmp = ptr->elem;
+			op_cnt->rb = i - 1;
 		}
 		ptr = ptr->next;
 	}
-	if (op_cnt->rb == -1)
-		op_cnt->rb = cnt;
 	op_cnt->rrb = (b->cnt - op_cnt->rb) % b->cnt;
 }
 
@@ -63,6 +63,10 @@ void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 	int	rrr;
 	int	r_rr;
 
+	op_cnt->ra = 0;
+	op_cnt->rb = 0;
+	op_cnt->rra = 0;
+	op_cnt->rrb = 0;
 	op_cnt->node = node;
 	count_op_a(node, a, op_cnt);
 	count_op_b(node, b, op_cnt);
@@ -121,7 +125,7 @@ void	choose_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 		choose_min_op(ptr, a, b, &tmp);
 		if (tmp.min_cnt < op_cnt->min_cnt && ptr->elem != a->max[0]
 			&& ptr->elem != a->max[1] && ptr->elem != a->max[2])
-				*op_cnt = tmp;
+			*op_cnt = tmp;
 		ptr = ptr->next;
 	}
 }
