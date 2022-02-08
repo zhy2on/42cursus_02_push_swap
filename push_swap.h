@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/07 20:29:20 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 15:43:15 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,27 @@ typedef struct s_op
 *** main ***
 */
 void	handle_error(int flag, t_stack *stack);
+
+/*
+*** simple_sort ***
+*/
+void	sort_3(t_stack *a, t_stack *b);
+void	sort_2(t_stack *a, t_stack *b);
+void	simple_sort(t_stack *a, t_stack *b);
+
+/*
+*** get_values ***
+*/
+char	*get_values_sub(t_stack *a, const char *str, int sign);
+char	*get_values(t_stack *a, const char *str);
+
+/*
+*** do_op ***
+*/
+int		ft_strcmp(const char *s1, const char *s2);
+void	do_op_sub_2(t_stack *a, t_stack *b, char *op);
+void	do_op_sub_1(t_stack *a, t_stack *b, char *op);
+void	do_op(t_stack *a, t_stack *b, char *op);
 
 /*
 *** op ***
