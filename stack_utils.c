@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:59:44 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/07 20:29:55 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 17:35:11 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_node	*getnode(t_node *prev, t_node *next, int elem)
 void	init_stack(t_stack *stack)
 {
 	stack->top = NULL;
-	stack->max[0] = -2147483648;
-	stack->min = 2147483647;
+	stack->max[0] = INT_MIN;
+	stack->min = INT_MAX;
 	stack->cnt = 0;
 }
 
@@ -67,12 +67,14 @@ int	add_node(t_stack *stack, int elem)
 int	remove_node(t_stack *stack)
 {
 	int		ret;
-	t_node	*tmp;
+	int		tmp;
+	t_node	*ptr;
 
-	tmp = stack->top;
-	ret = tmp->elem;
+	ptr = stack->top;
+	ret = ptr->elem;
 	stack->top = stack->top->next;
-	free(tmp);
+	free(ptr);
 	stack->cnt--;
+	set_stack_min_max(stack);
 	return (ret);
 }

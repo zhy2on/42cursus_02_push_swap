@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:51 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 15:04:37 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 16:19:28 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_values_sub(t_stack *a, const char *str, int sign)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str++ - '0');
-		if (sign * num < -2147483648 || sign * num > 2147483647)
+		if (sign * num < INT_MIN || sign * num > INT_MAX)
 			handle_error(1, a);
 	}
 	ptr = a->top;

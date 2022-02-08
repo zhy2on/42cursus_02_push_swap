@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 15:43:15 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 18:09:08 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+enum {
+	INT_MAX = 2147483647,
+	INT_MIN = -2147483648
+};
 
 typedef struct s_node
 {
@@ -30,19 +35,29 @@ typedef struct s_stack
 	int		cnt;
 }				t_stack;
 
-typedef struct s_op
+typedef struct s_op_cnt
 {
-	int	ra;
-	int	rb;
-	int	rra;
-	int	rrb;
-	int	min_op;
-}				t_op;
+	int		ra;
+	int		rb;
+	int		rra;
+	int		rrb;
+	char	min_type;
+	int		min_cnt;
+}				t_op_cnt;
 
 /*
 *** main ***
 */
 void	handle_error(int flag, t_stack *stack);
+
+/*
+*** choose_min_op
+*/
+void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt);
+void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt);
+void	count_op_a(t_node *node, t_stack *a, t_op_cnt *op_cnt);
+int		ft_max(int n, int m);
+int		ft_min(int n, int m);
 
 /*
 *** simple_sort ***
