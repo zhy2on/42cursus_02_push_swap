@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 19:51:45 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/08 20:01:18 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,20 @@ void	set_a_max(t_stack *a)
 	ptr = a->top;
 	tmp = INT_MIN;
 	while (ptr)
+	{
 		if (ptr->elem < a->max[0] && ptr->elem >= tmp)
 			tmp = ptr->elem;
+		ptr = ptr->next;
+	}
 	a->max[1] = tmp;
 	ptr = a->top;
 	tmp = INT_MIN;
 	while (ptr)
+	{
 		if (ptr->elem < a->max[1] && ptr->elem >= tmp)
 			tmp = ptr->elem;
+		ptr = ptr->next;
+	}
 	a->max[2] = tmp;
 }
 
@@ -116,5 +122,6 @@ void	choose_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 		if (tmp.min_cnt < op_cnt->min_cnt && ptr->elem != a->max[0]
 			&& ptr->elem != a->max[1] && ptr->elem != a->max[2])
 				*op_cnt = tmp;
+		ptr = ptr->next;
 	}
 }
