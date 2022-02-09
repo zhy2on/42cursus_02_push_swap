@@ -6,89 +6,93 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:09:30 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 19:16:27 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:34:05 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	do_op_sub_2(t_stack *a, t_stack *b, const char *op)
+void	print_op(const char *op, int print)
+{
+	if (print)
+	{
+		write(1, op, ft_strlen(op));
+		write(1, "\n", 1);
+	}
+}
+
+void	do_op_sub_2(t_stack *a, t_stack *b, const char *op, int print)
 {
 	if (a->cnt <= 1 || b->cnt <= 1)
-		return (0);
+		return ;
 	if (ft_strcmp(op, "ss") == 0)
 	{
 		swap(a);
 		swap(b);
-		write(1, "ss\n", 3);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "rr") == 0)
 	{
 		rotate(a);
 		rotate(b);
-		write(1, "rr\n", 3);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "rrr") == 0)
 	{
 		reverse_rotate(a);
 		reverse_rotate(b);
-		write(1, "rrr\n", 4);
+		print_op(op, print);
 	}
-	else
-		return (0);
-	return (1);
 }
 
-int	do_op_sub_1(t_stack *a, t_stack *b, const char *op)
+void	do_op_sub_1(t_stack *a, t_stack *b, const char *op, int print)
 {
 	if (ft_strcmp(op, "ra") == 0)
 	{
-		if (!rotate(a))
-			write(1, "ra\n", 3);
+		rotate(a);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "rb") == 0)
 	{
-		if (!rotate(b))
-			write(1, "rb\n", 3);
+		rotate(b);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "rra") == 0)
 	{
-		if (!reverse_rotate(a))
-			write(1, "rra\n", 4);
+		reverse_rotate(a);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "rrb") == 0)
 	{
-		if (!reverse_rotate(b))
-			write(1, "rrb\n", 4);
+		reverse_rotate(b);
+		print_op(op, print);
 	}
-	else if (do_op_sub_2(a, b, op))
-		return (0);
-	return (1);
+	else
+		do_op_sub_2(a, b, op, print);
 }
 
-int	do_op(t_stack *a, t_stack *b, const char *op)
+void	do_op(t_stack *a, t_stack *b, const char *op, int print)
 {
 	if (ft_strcmp(op, "pa") == 0)
 	{
-		if (!push(a, b))
-			write(1, "pa\n", 3);
+		push(a, b);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "pb") == 0)
 	{
-		if (!push(b, a))
-			write(1, "pb\n", 3);
+		push(b, a);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "sa") == 0)
 	{
-		if (!swap(a))
-			write(1, "sa\n", 3);
+		swap(a);
+		print_op(op, print);
 	}
 	else if (ft_strcmp(op, "sb") == 0)
 	{
-		if (!swap(b))
-			write(1, "sb\n", 3);
+		swap(b);
+		print_op(op, print);
 	}
-	else if (do_op_sub_1(a, b, op))
-		return (0);
-	return (1);
+	else
+		do_op_sub_1(a, b, op, print);
 }

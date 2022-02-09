@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 18:28:45 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:33:44 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_op_cnt
 /*
 *** main.c ***
 */
-void	handle_error(void);
 void	stack_sort(t_stack *a, t_stack *b);
 
 /*
@@ -80,23 +79,25 @@ void	simple_sort(t_stack *a, t_stack *b);
 /*
 *** get_values.c ***
 */
+void	handle_error(void);
+int		is_sorted(t_stack *a);
 char	*get_values_sub(t_stack *a, const char *str, int sign);
 char	*get_values(t_stack *a, const char *str);
 
 /*
 *** do_op.c ***
 */
-int		do_op_sub_2(t_stack *a, t_stack *b, const char *op);
-int		do_op_sub_1(t_stack *a, t_stack *b, const char *op);
-int		do_op(t_stack *a, t_stack *b, const char *op);
+void	do_op_sub_2(t_stack *a, t_stack *b, const char *op, int print);
+void	do_op_sub_1(t_stack *a, t_stack *b, const char *op, int print);
+void	do_op(t_stack *a, t_stack *b, const char *op, int print);
 
 /*
 *** op.c ***
 */
-int		push(t_stack *a, t_stack *b);
-int		swap(t_stack *a);
-int		rotate(t_stack *a);
-int		reverse_rotate(t_stack *a);
+void	push(t_stack *a, t_stack *b);
+void	swap(t_stack *a);
+void	rotate(t_stack *a);
+void	reverse_rotate(t_stack *a);
 
 /*
 *** stack utils.c ***
@@ -111,7 +112,5 @@ int		remove_node(t_stack *stack);
 *** checker.c ***
 */
 void	checker(t_stack *a, t_stack *b);
-int		handle_op(t_stack *a, t_stack *b);
-int		is_sorted(t_stack *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 19:27:11 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:19:47 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	stack_sort(t_stack *a, t_stack *b)
 {
 	t_op_cnt	op_cnt;
 
+	if (is_sorted(a))
+		return ;
 	if (a->cnt <= 3)
 	{
 		simple_sort(a, b);
@@ -29,7 +31,7 @@ void	stack_sort(t_stack *a, t_stack *b)
 	set_b_max_on_top(a, b);
 	sort_3(a, b);
 	while (b->top)
-		do_op(a, b, "pa");
+		do_op(a, b, "pa", 1);
 }
 
 int	main(int argc, char **argv)

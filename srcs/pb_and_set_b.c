@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 19:16:41 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:20:23 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	loop_do_op(t_stack *a, t_stack *b, int n, const char *op)
 
 	i = -1;
 	while (++i < n)
-		do_op(a, b, op);
+		do_op(a, b, op, 1);
 	return (i);
 }
 
@@ -82,5 +82,5 @@ void	pb_best_elem(t_stack *a, t_stack *b, t_op_cnt *op_cnt)
 	}
 	else
 		pb_best_elem_sub(a, b, op_cnt);
-	do_op(a, b, "pb");
+	do_op(a, b, "pb", 1);
 }

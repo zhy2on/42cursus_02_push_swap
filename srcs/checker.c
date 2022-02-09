@@ -6,51 +6,22 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 02:38:03 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 19:16:17 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:30:33 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *a)
-{
-	t_node	*ptr;
-
-	if (!a->top)
-		return (0);
-	ptr = a->top;
-	while (ptr->next)
-	{
-		if (ptr->elem > ptr->next->elem)
-			return (0);
-		ptr = ptr->next;
-	}
-	return (1);
-}
-
-int	handle_op(t_stack *a, t_stack *b)
+void	checker(t_stack *a, t_stack *b)
 {
 	char	*line;
 
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (!do_op(a, b, (const char *)line))
-		{
-			free(line);
-			get_next_line(-1, &line);
-			return (0);
-		}
+		do_op(a, b, (const char *)line, 0);
 		free(line);
 	}
-	free(line);
-	return (1);
-}
-
-void	checker(t_stack *a, t_stack *b)
-{
-	if (!handle_op(a, b))
-		handle_error();
 	if (is_sorted(a) && !b->top)
 		write(1, "OK\n", 3);
 	else

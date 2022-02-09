@@ -3,3 +3,6 @@ a.out
 push_swap
 checker
 *test*
+objs
+*.o
+*.a
