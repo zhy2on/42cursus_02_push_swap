@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:09:30 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 20:34:05 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:44:56 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	print_op(const char *op, int print)
 
 void	do_op_sub_2(t_stack *a, t_stack *b, const char *op, int print)
 {
-	if (a->cnt <= 1 || b->cnt <= 1)
-		return ;
 	if (ft_strcmp(op, "ss") == 0)
 	{
 		swap(a);
@@ -43,6 +41,8 @@ void	do_op_sub_2(t_stack *a, t_stack *b, const char *op, int print)
 		reverse_rotate(b);
 		print_op(op, print);
 	}
+	else
+		handle_error();
 }
 
 void	do_op_sub_1(t_stack *a, t_stack *b, const char *op, int print)
