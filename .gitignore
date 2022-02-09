@@ -6,3 +6,4 @@ checker
 objs
 *.o
 *.a
+.DS_Store
