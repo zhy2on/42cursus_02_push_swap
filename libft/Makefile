@@ -6,7 +6,7 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 18:03:00 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/09 16:47:50 by jihoh            ###   ########.fr        #
+#    Updated: 2022/02/09 17:14:30 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,10 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAG) -c $< -o $@ -I $(INC_DIR)
 
 clean :
-	@rm -f $(OBJS) $(OBJS_BONUS)
+	@rm -rf $(OBJ_DIR)
 
 fclean : clean
-	@rm -f $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all
 

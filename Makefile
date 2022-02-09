@@ -6,7 +6,7 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 00:47:28 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/09 16:46:13 by jihoh            ###   ########.fr        #
+#    Updated: 2022/02/09 17:14:41 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 
 clean:
 	@make -C $(LIB_DIR) clean
-	@rm -rf $(PS_OBJS) $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 	@printf '\033[31m[ ✔ ] %s\n\033[0m' "clean"
 
 fclean: clean
