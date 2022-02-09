@@ -6,16 +6,16 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:09:30 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/08 19:52:35 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:16:27 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_op_sub_2(t_stack *a, t_stack *b, const char *op)
+int	do_op_sub_2(t_stack *a, t_stack *b, const char *op)
 {
 	if (a->cnt <= 1 || b->cnt <= 1)
-		return ;
+		return (0);
 	if (ft_strcmp(op, "ss") == 0)
 	{
 		swap(a);
@@ -34,9 +34,12 @@ void	do_op_sub_2(t_stack *a, t_stack *b, const char *op)
 		reverse_rotate(b);
 		write(1, "rrr\n", 4);
 	}
+	else
+		return (0);
+	return (1);
 }
 
-void	do_op_sub_1(t_stack *a, t_stack *b, const char *op)
+int	do_op_sub_1(t_stack *a, t_stack *b, const char *op)
 {
 	if (ft_strcmp(op, "ra") == 0)
 	{
@@ -58,9 +61,12 @@ void	do_op_sub_1(t_stack *a, t_stack *b, const char *op)
 		if (!reverse_rotate(b))
 			write(1, "rrb\n", 4);
 	}
+	else if (do_op_sub_2(a, b, op))
+		return (0);
+	return (1);
 }
 
-void	do_op(t_stack *a, t_stack *b, const char *op)
+int	do_op(t_stack *a, t_stack *b, const char *op)
 {
 	if (ft_strcmp(op, "pa") == 0)
 	{
@@ -82,6 +88,7 @@ void	do_op(t_stack *a, t_stack *b, const char *op)
 		if (!swap(b))
 			write(1, "sb\n", 3);
 	}
-	do_op_sub_1(a, b, op);
-	do_op_sub_2(a, b, op);
+	else if (do_op_sub_1(a, b, op))
+		return (0);
+	return (1);
 }

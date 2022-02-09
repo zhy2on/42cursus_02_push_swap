@@ -6,7 +6,7 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 18:03:00 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/09 17:14:30 by jihoh            ###   ########.fr        #
+#    Updated: 2022/02/09 19:32:13 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,13 +46,16 @@ OBJS_BONUS = $(addprefix $(OBJ_DIR), $(OBJS_BONUS_NAME))
 all : $(NAME)
 
 $(NAME) : $(OBJS)
+	@echo "\033[2K \033[A"
 	@ar -cr $@ $^
+	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 
 bonus : $(OBJS) $(OBJS_BONUS)
 	@ar -cr $(NAME) $^
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
+	@echo "\033[2K [$(NAME)]: Compilation of $< \033[A"
 	@$(CC) $(CFLAG) -c $< -o $@ -I $(INC_DIR)
 
 clean :

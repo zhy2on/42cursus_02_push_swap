@@ -6,11 +6,11 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 15:43:52 by jihoh             #+#    #+#             */
-/*   Updated: 2021/07/01 17:57:27 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 18:22:16 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int	update_line(char **backup, char **line, char *pcut)
 {
@@ -55,7 +55,8 @@ int	get_next_line(int fd, char **line)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (-1);
-	while ((rsize = read(fd, buf, BUFFER_SIZE)) > 0)
+	rsize = read(fd, buf, BUFFER_SIZE);
+	while (rsize > 0)
 	{
 		buf[rsize] = '\0';
 		if (!backup[fd])
@@ -65,6 +66,7 @@ int	get_next_line(int fd, char **line)
 		backup[fd] = tmp;
 		if (ft_strchr(buf, '\n'))
 			break ;
+		rsize = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
 	return (return_case(&backup[fd], line, rsize));

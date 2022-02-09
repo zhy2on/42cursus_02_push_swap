@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:30:20 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:16:23 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt)
 
 	if (b->cnt == 0)
 		return ;
-	tmp = INT_MIN;
+	tmp = INTG_MIN;
 	i = 0;
 	ptr = b->top;
 	while (ptr && ++i)
@@ -88,7 +88,7 @@ void	set_a_max(t_stack *a)
 	int		tmp;
 
 	ptr = a->top;
-	tmp = INT_MIN;
+	tmp = INTG_MIN;
 	while (ptr)
 	{
 		if (ptr->elem < a->max[0] && ptr->elem >= tmp)
@@ -97,7 +97,7 @@ void	set_a_max(t_stack *a)
 	}
 	a->max[1] = tmp;
 	ptr = a->top;
-	tmp = INT_MIN;
+	tmp = INTG_MIN;
 	while (ptr)
 	{
 		if (ptr->elem < a->max[1] && ptr->elem >= tmp)

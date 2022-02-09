@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 03:59:01 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 18:28:45 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "../libft/includes/libft.h"
 
 enum {
-	INT_MAX = 2147483647,
-	INT_MIN = -2147483648
+	INTG_MAX = 2147483647,
+	INTG_MIN = -2147483648
 };
 
 typedef struct s_node
@@ -86,9 +86,9 @@ char	*get_values(t_stack *a, const char *str);
 /*
 *** do_op.c ***
 */
-void	do_op_sub_2(t_stack *a, t_stack *b, const char *op);
-void	do_op_sub_1(t_stack *a, t_stack *b, const char *op);
-void	do_op(t_stack *a, t_stack *b, const char *op);
+int		do_op_sub_2(t_stack *a, t_stack *b, const char *op);
+int		do_op_sub_1(t_stack *a, t_stack *b, const char *op);
+int		do_op(t_stack *a, t_stack *b, const char *op);
 
 /*
 *** op.c ***
@@ -106,5 +106,12 @@ t_node	*getnode(t_node *next, int elem);
 void	free_stack(t_stack *stack);
 int		add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);
+
+/*
+*** checker.c ***
+*/
+void	checker(t_stack *a, t_stack *b);
+int		handle_op(t_stack *a, t_stack *b);
+int		is_sorted(t_stack *a);
 
 #endif

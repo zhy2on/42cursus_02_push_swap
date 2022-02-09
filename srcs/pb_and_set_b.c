@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 01:20:41 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:16:41 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_b_max_on_top(t_stack *a, t_stack *b)
 	t_node	*ptr;
 
 	i = 0;
-	tmp = INT_MIN;
+	tmp = INTG_MIN;
 	ptr = b->top;
 	while (ptr)
 	{

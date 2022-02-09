@@ -6,11 +6,17 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:51 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 02:29:24 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:27:35 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	handle_error(void)
+{	
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 char	*get_values_sub(t_stack *a, const char *str, int sign)
 {
@@ -23,7 +29,7 @@ char	*get_values_sub(t_stack *a, const char *str, int sign)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str++ - '0');
-		if (sign * num < INT_MIN || sign * num > INT_MAX)
+		if (sign * num < INTG_MIN || sign * num > INTG_MAX)
 			handle_error();
 	}
 	ptr = a->top;

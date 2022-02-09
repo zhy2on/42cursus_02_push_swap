@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:59:44 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 02:24:03 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:16:52 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_node	*getnode(t_node *next, int elem)
 void	init_stack(t_stack *stack)
 {
 	stack->top = NULL;
-	stack->max[0] = INT_MIN;
-	stack->min = INT_MAX;
+	stack->max[0] = INTG_MIN;
+	stack->min = INTG_MAX;
 	stack->cnt = 0;
 }
 

@@ -1,35 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 19:27:11 by jihoh            ###   ########.fr       */
+/*   Created: 2022/02/09 02:38:03 by jihoh             #+#    #+#             */
+/*   Updated: 2022/02/09 19:16:17 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_sort(t_stack *a, t_stack *b)
+int	is_sorted(t_stack *a)
 {
-	t_op_cnt	op_cnt;
+	t_node	*ptr;
 
-	if (a->cnt <= 3)
+	if (!a->top)
+		return (0);
+	ptr = a->top;
+	while (ptr->next)
 	{
-		simple_sort(a, b);
-		return ;
+		if (ptr->elem > ptr->next->elem)
+			return (0);
+		ptr = ptr->next;
 	}
-	while (a->cnt > 3)
+	return (1);
+}
+
+int	handle_op(t_stack *a, t_stack *b)
+{
+	char	*line;
+
+	line = NULL;
+	while (get_next_line(0, &line) > 0)
 	{
-		choose_best_elem(a, b, &op_cnt);
-		pb_best_elem(a, b, &op_cnt);
+		if (!do_op(a, b, (const char *)line))
+		{
+			free(line);
+			get_next_line(-1, &line);
+			return (0);
+		}
+		free(line);
 	}
-	set_b_max_on_top(a, b);
-	sort_3(a, b);
-	while (b->top)
-		do_op(a, b, "pa");
+	free(line);
+	return (1);
+}
+
+void	checker(t_stack *a, t_stack *b)
+{
+	if (!handle_op(a, b))
+		handle_error();
+	if (is_sorted(a) && !b->top)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 
 int	main(int argc, char **argv)
@@ -46,8 +71,6 @@ int	main(int argc, char **argv)
 	while (--i >= 1)
 		while (*argv[i])
 			argv[i] = get_values(&a, argv[i]);
-	stack_sort(&a, &b);
-	free_stack(&a);
-	free_stack(&b);
+	checker(&a, &b);
 	return (0);
 }
