@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 02:30:11 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/09 03:59:01 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "../libft/includes/libft.h"
 
 enum {
 	INT_MAX = 2147483647,
@@ -105,12 +106,5 @@ t_node	*getnode(t_node *next, int elem);
 void	free_stack(t_stack *stack);
 int		add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);
-
-/*
-*** ft_utils.c ***
-*/
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_max(int n, int m);
-int		ft_min(int n, int m);
 
 #endif

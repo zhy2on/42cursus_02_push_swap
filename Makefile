@@ -6,36 +6,46 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 00:47:28 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/09 01:43:19 by jihoh            ###   ########.fr        #
+#    Updated: 2022/02/09 16:46:13 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall
+INC = -I$(INC_DIR) -I$(LIB_DIR)$(INC_DIR)
+LIB = -L$(LIB_DIR) -lft
 
-NAME = push_swap
+PS_NAME = push_swap
 
-HEADER = include
+LIB_DIR = libft/
+INC_DIR = includes/
+SRC_DIR = srcs/
+OBJ_DIR = objs/
 
-SRCS = $(addprefix src/, main.c choose_best_elem.c do_op.c op.c ft_utils.c \
-			get_values.c pb_and_set_b.c simple_sort.c stack_utils.c)
-OBJS = $(SRCS:.c=.o)
+PS_SRCS = main.c choose_best_elem.c do_op.c op.c \
+			get_values.c pb_and_set_b.c simple_sort.c stack_utils.c
+PS_OBJS_NAME = $(PS_SRCS:.c=.o)
+PS_OBJS = $(addprefix $(OBJ_DIR), $(PS_OBJS_NAME))
 
-all: $(NAME)
+all: $(PS_NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@ -I $(HEADER)
-	@printf '\033[32m[ ✔ ] %s\n\033[0m' "done"
+$(PS_NAME): $(PS_OBJS)
+	@make -C $(LIB_DIR)
+	$(CC) $(CFLAGS) $(PS_OBJS) -o $@ $(LIB)
+	@printf '\033[32m[ ✔ ] %s\n\033[0m' "push_swap done"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:
-	@rm -rf $(OBJS)
+	@make -C $(LIB_DIR) clean
+	@rm -rf $(PS_OBJS) $(OBJ_DIR)
 	@printf '\033[31m[ ✔ ] %s\n\033[0m' "clean"
 
 fclean: clean
-	@rm -rf $(NAME)
+	@make -C $(LIB_DIR) fclean
+	@rm -rf $(PS_NAME)
 	@printf '\033[31m[ ✔ ] %s\n\033[0m' "fclean"
 
 re: fclean all
