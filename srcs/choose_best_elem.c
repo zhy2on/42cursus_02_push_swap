@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 19:16:23 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/11 02:23:05 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	count_op_a(t_node *node, t_stack *a, t_op_cnt *op_cnt)
 		ptr = ptr->next;
 		op_cnt->ra++;
 	}
-	op_cnt->rra = (a->cnt - op_cnt->ra) % a->cnt;
+	op_cnt->rra = a->cnt - op_cnt->ra;
 }
 
 void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt)
@@ -53,7 +53,7 @@ void	count_op_b(t_node *node, t_stack *b, t_op_cnt *op_cnt)
 		}
 		ptr = ptr->next;
 	}
-	op_cnt->rrb = (b->cnt - op_cnt->rb) % b->cnt;
+	op_cnt->rrb = b->cnt - op_cnt->rb;
 }
 
 void	choose_min_op(t_node *node, t_stack *a, t_stack *b, t_op_cnt *op_cnt)
