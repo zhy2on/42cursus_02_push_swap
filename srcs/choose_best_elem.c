@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:38:14 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/11 02:23:05 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/11 02:30:20 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	count_op_a(t_node *node, t_stack *a, t_op_cnt *op_cnt)
 {
 	t_node	*ptr;
 
-	op_cnt->ra = 0;
 	if (a->cnt == 0)
 		return ;
 	ptr = a->top;
+	op_cnt->ra = 0;
 	while (ptr && (ptr != node))
 	{
 		ptr = ptr->next;
