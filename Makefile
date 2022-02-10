@@ -6,7 +6,7 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 00:47:28 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/10 17:40:47 by jihoh            ###   ########.fr        #
+#    Updated: 2022/02/11 00:47:48 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIB = -L $(LIB_DIR) -l ft
 
 PSWAP_NAME = push_swap
 CHKER_NAME = checker
+NAME = $(PSWAP_NAME) $(CHKER_NAME)
 
 LIB_DIR = libft/
 INC_DIR = includes/
@@ -31,7 +32,7 @@ CHKER_SRCS = checker.c choose_best_elem.c pb_and_set_b.c simple_sort.c \
 PSWAP_OBJS = $(addprefix $(OBJ_DIR), $(PSWAP_SRCS:.c=.o))
 CHKER_OBJS = $(addprefix $(OBJ_DIR), $(CHKER_SRCS:.c=.o))
 
-all: $(CHKER_NAME) $(PSWAP_NAME)
+all: $(NAME)
 
 $(PSWAP_NAME): $(PSWAP_OBJS)
 	@make -C $(LIB_DIR) --silent
