@@ -6,13 +6,13 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/10 17:38:25 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/10 17:56:41 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_sort(t_stack *a, t_stack *b)
+void	push_swap(t_stack *a, t_stack *b)
 {
 	t_op_cnt	op_cnt;
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	while (--i >= 1)
 		while (*argv[i])
 			argv[i] = get_values(&a, argv[i]);
-	stack_sort(&a, &b);
+	push_swap(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

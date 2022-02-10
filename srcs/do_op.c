@@ -6,11 +6,27 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:09:30 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 20:44:56 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/10 18:00:11 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted(t_stack *a)
+{
+	t_node	*ptr;
+
+	if (!a->top)
+		return (0);
+	ptr = a->top;
+	while (ptr->next)
+	{
+		if (ptr->elem > ptr->next->elem)
+			return (0);
+		ptr = ptr->next;
+	}
+	return (1);
+}
 
 void	print_op(const char *op, int print)
 {

@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/10 17:50:08 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/10 18:00:33 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,14 @@ typedef struct s_op_cnt
 }				t_op_cnt;
 
 /*
-*** main.c ***
+*** push_swap.c ***
 */
-void	stack_sort(t_stack *a, t_stack *b);
+void	push_swap(t_stack *a, t_stack *b);
+
+/*
+*** checker.c ***
+*/
+void	checker(t_stack *a, t_stack *b);
 
 /*
 *** choose_best_elem.c ***
@@ -80,13 +85,14 @@ void	simple_sort(t_stack *a, t_stack *b);
 *** get_values.c ***
 */
 void	handle_error(void);
-int		is_sorted(t_stack *a);
 char	*get_values_sub(t_stack *a, const char *str, int sign);
 char	*get_values(t_stack *a, const char *str);
 
 /*
 *** do_op.c ***
 */
+int		is_sorted(t_stack *a);
+void	print_op(const char *op, int print);
 void	do_op_sub_2(t_stack *a, t_stack *b, const char *op, int print);
 void	do_op_sub_1(t_stack *a, t_stack *b, const char *op, int print);
 void	do_op(t_stack *a, t_stack *b, const char *op, int print);
@@ -107,10 +113,5 @@ t_node	*getnode(t_node *next, int elem);
 void	free_stack(t_stack *stack);
 void	add_node(t_stack *stack, int elem);
 int		remove_node(t_stack *stack);
-
-/*
-*** checker.c ***
-*/
-void	checker(t_stack *a, t_stack *b);
 
 #endif
