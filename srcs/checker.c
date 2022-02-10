@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 02:38:03 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 20:41:41 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/11 02:16:58 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	checker(t_stack *a, t_stack *b)
 		do_op(a, b, (const char *)line, 0);
 		free(line);
 	}
+	free(line);
 	if (is_sorted(a) && !b->top)
 		write(1, "OK\n", 3);
 	else
