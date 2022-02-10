@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:57:18 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 20:04:57 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/10 17:50:42 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	push(t_stack *a, t_stack *b)
 {
 	if (!b->cnt)
 		return ;
-	if (add_node(a, remove_node(b)))
-		handle_error();
+	add_node(a, remove_node(b));
 }
 
 void	swap(t_stack *a)

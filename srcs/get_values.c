@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:51 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/09 20:08:32 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/02/10 17:50:57 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ char	*get_values_sub(t_stack *a, const char *str, int sign)
 			handle_error();
 		ptr = ptr->next;
 	}
-	if (add_node(a, sign * num))
-		handle_error();
+	add_node(a, sign * num);
 	return ((char *)str);
 }
 
