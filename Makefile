@@ -6,7 +6,7 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 00:47:28 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/09 19:46:24 by jihoh            ###   ########.fr        #
+#    Updated: 2022/02/10 17:40:47 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,9 @@ INC_DIR = includes/
 SRC_DIR = srcs/
 OBJ_DIR = objs/
 
-PSWAP_SRCS = main.c choose_best_elem.c pb_and_set_b.c simple_sort.c	\
+PSWAP_SRCS = push_swap.c choose_best_elem.c pb_and_set_b.c simple_sort.c \
 			do_op.c op.c get_values.c stack_utils.c
-CHKER_SRCS = checker.c choose_best_elem.c pb_and_set_b.c simple_sort.c	\
+CHKER_SRCS = checker.c choose_best_elem.c pb_and_set_b.c simple_sort.c \
 			do_op.c op.c get_values.c stack_utils.c
 
 PSWAP_OBJS = $(addprefix $(OBJ_DIR), $(PSWAP_SRCS:.c=.o))
