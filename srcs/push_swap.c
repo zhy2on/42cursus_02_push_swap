@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:27 by jihoh             #+#    #+#             */
-/*   Updated: 2022/03/01 18:43:32 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/03/01 20:49:12 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,19 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+	t_node	*ptr;
 	int		i;
 
 	init_stack(&a);
 	init_stack(&b);
-	i = argc;
-	while (--i >= 1)
+	i = 0;
+	while (++i < argc)
+	{
+		if (!*argv[i])
+			handle_error();
 		while (*argv[i])
 			argv[i] = get_values(&a, argv[i]);
+	}
 	push_swap(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
