@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:47:01 by jihoh             #+#    #+#             */
-/*   Updated: 2022/03/01 20:49:02 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/03/01 21:27:41 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	simple_sort(t_stack *a, t_stack *b);
 *** get_values.c ***
 */
 void	handle_error(void);
+void	add_last(t_stack *stack, int elem);
 char	*get_values_sub(t_stack *a, const char *str, int sign);
 char	*get_values(t_stack *a, const char *str);
 
