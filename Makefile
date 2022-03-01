@@ -6,11 +6,11 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 00:47:28 by jihoh             #+#    #+#              #
-#    Updated: 2022/02/11 00:47:48 by jihoh            ###   ########.fr        #
+#    Updated: 2022/03/01 18:33:30 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = cc
 CFLAGS = -Werror -Wextra -Wall
 INC = -I $(INC_DIR) -I $(LIB_DIR)$(INC_DIR)
 LIB = -L $(LIB_DIR) -l ft
