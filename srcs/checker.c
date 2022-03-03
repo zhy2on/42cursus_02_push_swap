@@ -6,7 +6,7 @@
 /*   By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 02:38:03 by jihoh             #+#    #+#             */
-/*   Updated: 2022/02/11 02:16:58 by jihoh            ###   ########.fr       */
+/*   Updated: 2022/03/03 17:14:31 by jihoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ int	main(int argc, char **argv)
 
 	init_stack(&a);
 	init_stack(&b);
-	if (argc < 2)
-		handle_error();
-	i = argc;
-	while (--i >= 1)
+	i = 0;
+	while (++i < argc)
+	{
+		if (!*argv[i])
+			handle_error();
 		while (*argv[i])
 			argv[i] = get_values(&a, argv[i]);
+	}
 	checker(&a, &b);
 	return (0);
 }
