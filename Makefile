@@ -6,7 +6,7 @@
 #    By: jihoh <jihoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 00:47:28 by jihoh             #+#    #+#              #
-#    Updated: 2022/03/01 18:33:30 by jihoh            ###   ########.fr        #
+#    Updated: 2022/10/01 19:05:54 by jihoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,22 +17,32 @@ LIB = -L $(LIB_DIR) -l ft
 
 PSWAP_NAME = push_swap
 CHKER_NAME = checker
-NAME = $(PSWAP_NAME) $(CHKER_NAME)
+NAME := $(PSWAP_NAME)
 
 LIB_DIR = libft/
 INC_DIR = includes/
 SRC_DIR = srcs/
 OBJ_DIR = objs/
 
-PSWAP_SRCS = push_swap.c choose_best_elem.c pb_and_set_b.c simple_sort.c \
-			do_op.c op.c get_values.c stack_utils.c
-CHKER_SRCS = checker.c choose_best_elem.c pb_and_set_b.c simple_sort.c \
-			do_op.c op.c get_values.c stack_utils.c
+#== Define srcs ==#
+COMMON_SRCS = choose_best_elem.c pb_and_set_b.c simple_sort.c do_op.c op.c get_values.c stack_utils.c
+PSWAP_SRCS = push_swap.c $(COMMON_SRCS)
+CHKER_SRCS = checker.c $(COMMON_SRCS)
 
+#== Define objs ==#
 PSWAP_OBJS = $(addprefix $(OBJ_DIR), $(PSWAP_SRCS:.c=.o))
 CHKER_OBJS = $(addprefix $(OBJ_DIR), $(CHKER_SRCS:.c=.o))
 
+#== For bonus ==#
+ifdef WITH_BONUS
+	NAME := $(CHKER_NAME)
+endif
+
+#== Rules ==#
 all: $(NAME)
+
+bonus:
+	@make WITH_BONUS=1 all
 
 $(PSWAP_NAME): $(PSWAP_OBJS)
 	@make -C $(LIB_DIR) --silent
